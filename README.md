@@ -1,6 +1,6 @@
 # Virtual Envrionment Manager (Vman)
 
-### Requires
+### Requirements
 1. Python 3
 2. Unix based machine (mac, linux, etc)
 
