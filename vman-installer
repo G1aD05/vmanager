@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if command -v python3 &>/dev/null; then
+    sudo echo "Python 3 is installed."
+    python3 --version
+    mkdir /usr/local/bin/vmanager/
+    mkdir /usr/local/bin/vmanager/environments
+    curl -o /usr/local/bin/ https://raw.githubusercontent.com/G1aD05/vman-resources/main/vman
+else
+    echo "Python 3 is not installed. This CLI requires Python 3"
+    exit 0
+fi
