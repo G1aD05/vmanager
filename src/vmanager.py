@@ -22,6 +22,7 @@ remove -- removes a virtual environment (ex: vman remove venv-name)
 run -- runs a python file with a virtual environment (ex: vman run venv-name python-file.py)
 install -- installs a package into a the selected virtual environment (ex: vman install package-name venv-name)
 info -- gets the installed packages from a virtual environment (ex: vman info venv-name)
+uninstall -- uninstalls the selected package (ex: vman uninstall package-name venv-name)
 """)
 
 if argv[1] == 'new':
