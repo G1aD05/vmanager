@@ -51,3 +51,19 @@ elif argv[1] == 'info':
     subprocess.run(f'source /usr/local/bin/vmanager/environments/{argv[2]}/bin/activate && pip list --local',
                    shell=True,
                    executable='/bin/bash')
+
+elif argv[1] == 'upgrade':
+    subprocess.run(f'source /usr/local/bin/vmanager/environments/{argv[2]}/bin/activate && pip install --upgrade $(pip freeze | awk -F"==" \'{{print $1}}\')',
+                   shell=True,
+                   executable='/bin/bash')
+    print(f'Upgraded all packages in {argv[2]} environment')
+
+elif argv[1] == 'uninstall':
+    subprocess.run(f'source /usr/local/bin/vmanager/environments/{argv[3]}/bin/activate && pip uninstall {argv[2]} -y',
+                   shell=True,
+                   executable='/bin/bash')
+    print(f'Successfully uninstalled {argv[2]} from {argv[3]} environment')
+
+
+
+
