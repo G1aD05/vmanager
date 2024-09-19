@@ -25,14 +25,10 @@ info -- gets the installed packages from a virtual environment (ex: vman info ve
 """)
 
 if argv[1] == 'new':
-    try:
-        if argv[2] == '--name':
-            if os.path.exists(f'/usr/local/bin/vmanager/environments/{argv[3]}'):
-                print('This virtual environment already exists!')
-            else:
-                venv.create(Path(f'/usr/local/bin/vmanager/environments/{argv[3]}'))
-    except:
-        print('No name has been set! Use --name to give the virtual environment a name.')
+    if os.path.exists(f'/usr/local/bin/vmanager/environments/{argv[2]}'):
+        print('This virtual environment already exists!')
+    else:
+        venv.create(Path(f'/usr/local/bin/vmanager/environments/{argv[2]}'))
 
 elif argv[1] == 'remove':
     if input('Continue? Y/n: ') == 'Y':
@@ -42,13 +38,16 @@ elif argv[1] == 'remove':
         print('Cancelled')
 
 elif argv[1] == 'run':
-    subprocess.run(f'source /usr/local/bin/vmanager/environments/{argv[2]}/bin/activate && python3 {argv[3]}', shell=True,
+    subprocess.run(f'source /usr/local/bin/vmanager/environments/{argv[2]}/bin/activate && python3 {argv[3]}',
+                   shell=True,
                    executable='/bin/bash')
 
 elif argv[1] == 'install':
-    os.system(f'python3 -m pip install {argv[2]} --upgrade --target /usr/local/bin/vmanager/environments/{argv[3]}/lib/python{major_minor}/site-packages/')
+    os.system(
+        f'python3 -m pip install {argv[2]} --upgrade --target /usr/local/bin/vmanager/environments/{argv[3]}/lib/python{major_minor}/site-packages/')
     print(f"Successfully installed {argv[2]}")
 
 elif argv[1] == 'info':
-    subprocess.run(f'source /usr/local/bin/vmanager/environments/{argv[2]}/bin/activate && pip list --local', shell=True,
+    subprocess.run(f'source /usr/local/bin/vmanager/environments/{argv[2]}/bin/activate && pip list --local',
+                   shell=True,
                    executable='/bin/bash')
